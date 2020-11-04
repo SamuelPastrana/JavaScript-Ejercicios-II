@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>JavaScript: Eventos</title>
+    </head>
+
+    <body>
+        <h1>Eventos</h1>
+        <button id="cambiarFondo">Cambiar Fondo</button>
+
+        <script type="text/javascript">
+            document.addEventListener("keydown",function(evento){
+                console.log(evento);
+            });
+
+            var boton = document.getElementById('cambiarFondo');
+            
+            function random(numeroMaximo){
+                return Math.round(Math.random()*numeroMaximo);
+            };
+            
+            boton.addEventListener("click",function(evento){
+                console.log(evento);
+                var randomColor =[
+                    random(255),
+                    random(255),
+                    random(255),
+                ];
+                document.body.style.backgroundColor = "rgb(" + randomColor[0] + ", " + randomColor[1] + ", " +randomColor[2] + ")";
+            });
+
+            document.addEventListener("cambiarFondo",function(evento){
+                console.log(evento);
+                console.log(evento.detail);
+            });
+            var event = new CustomEvent('cambiarFondo',{'detail':'Hola Samuel'});
+
+            document.dispatchEvent(event);
+        </script>
+    </body>
+</html>

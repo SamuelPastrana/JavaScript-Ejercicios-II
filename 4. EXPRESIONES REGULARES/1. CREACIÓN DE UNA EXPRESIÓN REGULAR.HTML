@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>JavaScript Expresiones Regulares</title>
+    </head>
+
+    <body>
+        <p>Expresiones Regulares</p>
+
+        <script type="text/javascript">
+            var banda = "B-T-S";
+            console.log(banda);
+            var regExp = /\//g;
+            console.log(banda.search(regExp));
+
+            var texto = "Hola Mundo";
+            console.log(texto);
+            var regExp = /^[a-z]$/g; 
+            console.log(texto.search(regExp));
+            console.log(regExp.test(texto));
+
+            var regExp2 = /s+$/;
+            var texto2 = "Bienvenidos";
+            console.log(texto2);
+            console.log(texto2.search(regExp2));
+            console.log(regExp2.test(texto2));
+        </script>
+
+    </body>
+</html>

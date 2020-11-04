@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>JavaScript Intermedio: DOM</title>
+    <style>
+        #mi_id_de_prueba{
+            color: red;
+        }
+        #parrafo{
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="parrafo"> Mi primera clase práctica de DOM</p>
+    <p> Mi segunda clase práctica de DOM</p>
+
+    <input type="text" id="todoTitle">
+    <button id = "agregarTarea">Agregar Tarea</button>
+
+    <ul id = "todo_list"> 
+
+    </ul>
+
+    <script type="text/javascript">
+    
+        var parrafo = document.getElementById("parrafo");
+        parrafo.style.background = "yellow";
+        console.log(parrafo.innerText);
+    
+        var parrafo2 = document.getElementsByTagName('p');
+        console.log(parrafo2);
+        parrafo2[1].id = 'mi_id_de_prueba';
+        parrafo2[1].style.background = "blue";
+
+        var tareas = [
+            "Hacer las arepas",
+            "Preparar la cena",
+            "Tirar la basura",
+        ];
+
+        var todoList = document.querySelector('#todo_list');
+
+        function agregarTarea(tarea, id){
+            var li = document.createElement('li');
+            li.textContent = tarea;
+
+            if(id){
+                li.id = id;
+            };
+
+            todoList.appendChild(li);
+        };
+
+        for(var i = 0; i<tareas.length; i+=1){
+            var tarea = tareas[i];
+            agregarTarea(tarea, 'elemento_' + i);
+        }
+
+        setTimeout(function(){
+        var elementoAEliminar = document.getElementById('elemento_0');
+        todoList.removeChild(elementoAEliminar);
+        },2000);
+        
+        var agregarBoton = document.getElementById("agregarTarea");
+        agregarBoton.addEventListener('click',function(){
+            var todoValue = document.getElementById('todoTitle').value;
+            
+            agregarTarea(todoValue);
+        });
+    </script>
+</body>
+
+</html>
